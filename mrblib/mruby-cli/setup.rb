@@ -1,8 +1,9 @@
 module MRubyCLI
   class Setup
-    def initialize(name, output)
+    def initialize(name, output, mruby_version)
       @name   = name
       @output = output
+      @mruby_version = mruby_version
     end
 
     def run
@@ -324,7 +325,7 @@ DOCKER_COMPOSE_YML
       <<RAKEFILE
 require 'fileutils'
 
-MRUBY_VERSION="1.2.0"
+MRUBY_VERSION="#{@mruby_version}"
 
 file :mruby do
   #sh "git clone --depth=1 https://github.com/mruby/mruby"
