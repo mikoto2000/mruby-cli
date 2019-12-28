@@ -11,10 +11,10 @@ You'll need the following installed and in your `PATH`:
 On Mac OS X and Windows, [Docker Toolbox](https://www.docker.com/toolbox) is the recommended way to install Docker and docker-compose (does not work on windows).
 
 ## Building a CLI app
-To generate a new mruby CLI, there's a `--setup` option.
+To generate a new mruby CLI, there's a `--setup` and `--mruby-version` option.
 
 ```sh
-$ mruby-cli --setup <app name>
+$ mruby-cli --setup <app name> --mruby-version <app mruby version>
 ```
 
 This will generate a folder `<app name>` containing a basic skeleton for getting started. Once you're in the folder, you can build all the binaries:
