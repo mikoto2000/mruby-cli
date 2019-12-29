@@ -303,29 +303,8 @@ source $HOME/.bash_profile
       end
     end
   end
-
-  desc "create dmg package"
-  task :dmg => [:release] do
-    abort("dmg tools are not installed.  Please check your docker install.") unless check_dmg_installed?
-    ["x86_64", "i386"].each do |arch|
-      log(package_dir, version, "mruby-cli-#{version}-#{arch}.dmg")
-      release_tar_file = "mruby-cli-#{version}-#{arch}-apple-darwin14.tgz"
-      Dir.mktmpdir do |dest_dir|
-        Dir.chdir dest_dir
-        `tar -zxf #{release_path}/#{release_tar_file}`
-        FileUtils.chmod 0755, "mruby-cli"
-        FileUtils.mkdir_p "mruby-cli.app/Contents/MacOs"
-        FileUtils.mv "mruby-cli", "mruby-cli.app/Contents/MacOs"
-        File.write("mruby-cli.app/Contents/Info.plist", info_plist_content(version, arch))
-        File.write("add-mruby-cli-to-my-path.sh", osx_setup_bash_path_script)
-        FileUtils.chmod 0755, "add-mruby-cli-to-my-path.sh"
-        `genisoimage -V mruby-cli -D -r -apple -no-pad -o #{package_path}/mruby-cli-#{version}-#{arch}.dmg #{dest_dir}`
-      end
-    end
-  end
-
 end
 
 desc "create all packages"
-task :package => ["package:deb", "package:rpm", "package:msi", "package:dmg"]
+task :package => ["package:deb", "package:rpm", "package:msi"]
 
