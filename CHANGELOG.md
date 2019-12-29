@@ -1,5 +1,7 @@
 # 0.0.5 12-29-2019
+  * added `--mruby-version` option
   * modified docker image to mikoto2000/mruby-cli-docker:0.0.5
+  * unsupport apple-darwin
 
 # 0.0.2 08-21-2015
   * improve development documentation: #9
