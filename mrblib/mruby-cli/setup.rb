@@ -289,7 +289,7 @@ VERSION
 
     def dockerfile
       <<DOCKERFILE
-FROM hone/mruby-cli
+FROM mikoto2000/mruby-cli
 DOCKERFILE
     end
 
